@@ -1,31 +1,32 @@
 import keyboard
 from _datetime import datetime
-import time
 import requests
-from dotenv import load_dotenv
-import os
 
-load_dotenv()
-API_KEY = os.getenv("LOREM_API_KEY")
 
 # -----------------Set up Screen-------------------
-print("Welcome to Speedster, a program that measures your typing speed\n")
+print("Welcome to Speedster, a Python-based typing speed test program that measures your typing speed,"
+      "detects mistakes and calculates your Words Per Minute (WPM)\n")
 
 # -----Accepts input from user and sets difficulty
 difficulty = int(input("Select the number of paragraph you will like to type\n"
                        "EASY, 25 words max: --> 1\n"
                        "MEDIUM, 40 words max: --> 2\n"
                        "HARD, 60 words --> 3\n"
-                       "Choose difficulty: "))
+                       "Choose difficulty: \n"
+                       "You can set a custom word count: Enter a number between 1 - 500 words max): "))
 print("Instructions: The timer starts when you click 'Enter', click 'Esc' to stop")
 
-num_words = 25
-if difficulty == 1:
-    num_words = num_words
+num_words = difficulty
+if difficulty < 1:
+    num_words = 25
 elif difficulty == 2:
     num_words = 40
 elif difficulty == 3:
     num_words = 60
+elif difficulty == 1:
+    num_words = num_words
+elif difficulty > 500:
+    num_words = 200
 
 random_words_url = f"https://random-word-api.herokuapp.com/word?number={num_words}"
 response = requests.get(random_words_url)
@@ -84,7 +85,6 @@ joined_words = " ".join("".join(typed_keys).split())
 users_words = joined_words.split(" ")
 
 # ------------------------- check for wrong words ---------------------
-# wrong_words = [typed_words not in web_texts for typed_words in users_words]
 wrong_words = [typed_word for typed_word in users_words if typed_word not in web_texts]
 if wrong_words:
     print(f"\nErrors: {len(wrong_words)}")
