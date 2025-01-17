@@ -4,16 +4,16 @@ import requests
 
 
 # -----------------Set up Screen-------------------
-print("Welcome to Speedster, a Python-based typing speed test program that measures your typing speed,"
+print("Welcome to Speedster 👩‍💻💨, a Python-based typing speed test program that measures your typing speed,"
       "detects mistakes and calculates your Words Per Minute (WPM)\n")
 
 # -----Accepts input from user and sets difficulty
-difficulty = int(input("Select the number of paragraph you will like to type\n"
+difficulty = int(input("Select the number of words you will like to type\n"
                        "EASY, 25 words max: --> 1\n"
                        "MEDIUM, 40 words max: --> 2\n"
                        "HARD, 60 words --> 3\n"
-                       "Choose difficulty: \n"
-                       "You can set a custom word count: Enter a number between 1 - 500 words max): "))
+                       "You can set a custom word count: Enter a number between 1 - 500 words max)\n"
+                       "Choose difficulty: "))
 print("Instructions: The timer starts when you click 'Enter', click 'Esc' to stop")
 
 num_words = difficulty
@@ -26,7 +26,7 @@ elif difficulty == 3:
 elif difficulty == 1:
     num_words = num_words
 elif difficulty > 500:
-    num_words = 200
+    num_words = 500
 
 random_words_url = f"https://random-word-api.herokuapp.com/word?number={num_words}"
 response = requests.get(random_words_url)
@@ -65,13 +65,18 @@ keyboard.wait("esc")
 stop_time = datetime.now()
 
 
-keyboard.unhook_all() # Cleanup listener
+keyboard.unhook_all()  # Cleanup listener
 
 # --------------------------Time--------------------------
 type_time = stop_time - start_time
 total_secs = int(type_time.total_seconds())
 total_min = total_secs // 60
-word_per_min = word_length / total_min
+
+# avoid zero division error
+if total_min == 0:
+    word_per_min = word_length / (total_secs / 60)
+else:
+    word_per_min = word_length / total_min
 
 
 # ----------------- format user's typed words

@@ -1,5 +1,5 @@
 
-# Speedster - Typing Speed Test Program
+# Speedster 👩‍💻💨 - Typing Speed Test Program
 
 Features
 - **Dynamic Content**: Fetch random words to type via an API.
@@ -24,4 +24,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 Acknowledgments
 Special thanks to:
-RazorSh4rk for the Random Words API --->  https://github.com/RazorSh4rk/random-word-api/
+- RazorSh4rk for the Random Words API --->  https://github.com/RazorSh4rk/random-word-api/
+- Emojis from emojidb.org
