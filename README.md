@@ -36,7 +36,10 @@
 - Emojis from emojidb.org
 
 **Screenshots**
+
 ![1 (3)](https://github.com/user-attachments/assets/15afb232-33bb-4a7b-b2af-29bfbc58e086)
+
 ![1 (2)](https://github.com/user-attachments/assets/81d4c6cc-a589-453e-afea-cf56823cdac0)
+
 ![1 (1)](https://github.com/user-attachments/assets/39318b4d-98a0-4443-83a4-0af8262001da)
 
